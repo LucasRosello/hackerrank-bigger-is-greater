@@ -149,7 +149,7 @@ func TestHackerRank(t *testing.T) {
 }
 
 func readFile(fileName string) (list []string) {
-	file, err := os.Open("./" + fileName + ".txt")
+	file, err := os.Open("./rawTests/" + fileName + ".txt")
 	if err != nil {
 		log.Fatal(err)
 	}

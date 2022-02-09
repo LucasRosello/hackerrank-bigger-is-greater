@@ -1,13 +1,29 @@
 package main
 
-func biggerIsGood(word string) string {
+func biggerIsGreater(word string) string {
 
-	wordEnd := word[len(word)-2:]
+	/*
+		Recorre cada grupo de letras dentro de mi palabra
+	*/
+	for cantidadDeLetras := 1; cantidadDeLetras < len(word); cantidadDeLetras++ {
 
-	for i := 3; i <= len(word); i++ {
-		if len(word) >= 4 && wordEnd > word[len(word)-i:len(word)-2] {
-			word = word[:len(word)-i] + wordEnd + word[len(word)-i:len(word)-2]
-			return word
+		wordEnd := string(word[len(word)-cantidadDeLetras:])
+
+		/*
+			Compara el final de mi palabra (wordEnd) con las distintas partes de la
+			palabra para tratar de encontrar una letra que sea inferior en orden alfabetico
+		*/
+		for i := len(word) - 1 - cantidadDeLetras; i >= 0; i-- {
+			letter := word[i]
+			if wordEnd > string(letter) {
+
+				/*
+					Si encuentra esa letra menor en orden alfabetico intercambia las
+					posiciones de mi wordEnd con la letra encontrada
+				*/
+				return word[:i] + wordEnd + word[i:len(word)-cantidadDeLetras]
+
+			}
 		}
 	}
 
